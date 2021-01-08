@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/search.css"/>
+</head>
+
+<body>
+<br/>
+<center>
+<select id='search' class="search">
+    <option>Search By....</option>
+    <option value="1">Author</option>
+    <option value="2">Book</option>
+</select>
+</center>
+<br/>
+
+<div class="dropdown">
+  <div id="author" class="dropdown-content">
+    <input type="text" placeholder="Search.." id="myInput">
+    <form method="GET" action="/search_author/J.K.Rowling" name="author">
+    <a href="#">
+      <button type="submit">J.K.Rowling</button>
+    </a>
+  </form>
+  <form method="GET" action="/search_author/Elizabeth Rudnick" name="author">
+    <a href="#">
+      <button type="submit">Elizabeth Rudnick</button>
+    </a>
+  </form> 
+  <form method="GET" action="/search_author/chiru" name="author">
+    <a href="#">
+      <button type="submit">chiru</button>
+    </a>
+  </form> 
+  </div>
+</div>
+
+<div class="dropdown dx">
+  <div id="book" class="dropdown-content d">
+    <input class="myInput" type="text" placeholder="Search.." id="myInput">
+    <form action="/search_book/java" name="type" method="GET">
+    <a href="#">
+      <button type="submit">java</button>
+    </a>
+    </form>
+    <form action="/search_book/cenima" name="type" method="GET">
+      <a href="#">
+        <button type="submit">cenima</button>
+      </a>
+      </form>
+    <form action="/search_book/network" name="type" method="GET">
+    <a href="#">
+      <button type="submit">network</button>
+    </a>
+  </form>
+  <form action="/search_book/love" name="type" method="GET">
+    <a href="#">
+      <button type="submit">love</button>
+    </a>
+  </form>
+  <form action="/search_book/horror" name="type" method="GET">
+    <a href="#">
+      <button type="submit">horror</button>
+    </a>
+  </form>
+  <form action="/search_book/fiction" name="type" method="GET">
+    <a href="#">
+      <button type="submit">fiction</button>
+    </a>
+  </form>
+  <form action="/search_book/story" name="type" method="GET">
+    <a href="#">
+      <button type="submit">story</button>
+    </a>
+  </form>
+  <form action="/search_book/life" name="type" method="GET">
+    <a href="#">
+        <button type="submit">life</button>
+    </a>
+    </form>
+  </div>
+</div>
+
+<script>
+    $('#search').on('change', function () {
+        $("#author").css('display', (this.value == '1') ? 'block' : 'none');
+        
+        $("#book").css('display', (this.value == '2') ? 'block' : 'none');
+        });
+
+    $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $(".dropdown-content a").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+    });
+
+
+    $(document).ready(function(){
+    $(".myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $(".d a").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+    });
+</script>
+
+</body>
+</html> 

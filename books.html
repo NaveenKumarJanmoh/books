@@ -1,0 +1,152 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/books1.css"/>
+    <link href='/css/books.css' rel='stylesheet'>
+</head>
+
+<body>
+  
+<br/>
+<select id='search' class="search">
+    <option>Search By....</option>
+    <option value="1">Author</option>
+    <option value="2">Book</option>
+</select>
+<br/><br/>
+
+<div class="dropdown">
+  <div id="author" class="dropdown-content">
+    <input type="text" placeholder="Search.." id="myInput">
+    <form method="GET" action="/search_author/J.K.Rowling" name="author">
+    <a href="#">
+      <button class="but" type="submit">J.K.Rowling</button>
+    </a>
+  </form>
+  <form method="GET" action="/search_author/Elizabeth Rudnick" name="author">
+    <a href="#">
+      <button class="but" type="submit">Elizabeth Rudnick</button>
+    </a>
+  </form> 
+  <form method="GET" action="/search_author/chiru" name="author">
+    <a href="#">
+      <button class="but" type="submit">chiru</button>
+    </a>
+  </form>  
+  </div>
+</div>
+
+
+
+<div class="dropdown dx">
+  <div id="book" class="dropdown-content d">
+    <input class="myInput" type="text" placeholder="Search.." id="myInput">
+    <form action="/search_book/java" name="type" method="GET">
+    <a href="#">
+      <button class="but" type="submit">java</button>
+    </a>
+    </form>
+    <form action="/search_book/cenima" name="type" method="GET">
+      <a href="#">
+        <button class="but" type="submit">cenima</button>
+      </a>
+      </form>
+    <form action="/search_book/network" name="type" method="GET">
+    <a href="#">
+      <button class="but" type="submit">network</button>
+    </a>
+  </form>
+  <form action="/search_book/love" name="type" method="GET">
+    <a href="#">
+      <button class="but" type="submit">love</button>
+    </a>
+  </form>
+  <form action="/search_book/horror" name="type" method="GET">
+    <a href="#">
+      <button class="but" type="submit">horror</button>
+    </a>
+  </form>
+  <form action="/search_book/fiction" name="type" method="GET">
+    <a href="#">
+      <button class="but" type="submit">fiction</button>
+    </a>
+  </form>
+  <form action="/search_book/story" name="type" method="GET">
+    <a href="#">
+      <button class="but" type="submit">story</button>
+    </a>
+  </form>
+  <form action="/search_book/life" name="type" method="GET">
+    <a href="#">
+        <button class="but" type="submit">life</button>
+    </a>
+    </form>
+    <form action="/search_book/story" name="type" method="GET">
+      <a href="#">
+          <button class="but" type="submit">story</button>
+      </a>
+      </form>
+  </div>
+</div>
+
+<script>
+    $('#search').on('change', function () {
+        $("#author").css('display', (this.value == '1') ? 'block' : 'none');
+        
+        $("#book").css('display', (this.value == '2') ? 'block' : 'none');
+        });
+
+    $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $(".dropdown-content a").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+    });
+
+
+    $(document).ready(function(){
+    $(".myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $(".d a").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+    });
+</script>
+
+
+<section id="team">
+  <div class="container">
+      <% if(data.length){
+          for(var i = 0;i < data.length;i++) { %>
+      <div class="box">
+          <div class="top-bar"></div>
+          <div class="nav">
+
+          </div>
+          <div class="details">
+              <img src="<%=data[i].image%>" width="150" height="200">
+              <strong><%=data[i].title%></strong>
+              <p><a href="#">By</a> <%=data[i].author%></p>
+              <p><%=data[i].type%></p>
+            <p>&#8377; <%=data[i].price%></p>
+          </div>
+          <div class="btn">
+              <form action="/details/<%=data[i].code%>" method="get">
+                <a class="rate" href="#"><%=data[i].rate%><i class="verify fa fa-star"></i></a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="hidden" name="code" value="<%=data[i].code%>"/>
+                <button type="submit" class="view"><i class="fas fa-eye"></i>View</button>
+              </form>
+          </div>
+      </div>
+      <% }
+}else{
+} %>
+  </div>
+  </section>
+</body>
+</html> 

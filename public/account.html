@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/account.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <script type="text/javascript">	
+
+        function terms_changed(termsCheckBox){
+        
+            if(termsCheckBox.checked){
+                document.getElementById("submit_button").disabled = false;
+            } else{
+                document.getElementById("submit_button").disabled = true;
+            }
+        }
+    </script>
+<center class="form">
+<h4>Join MyndFactory</h4><br/>
+<form action="authentication" method="post">
+<input type="text" class="input" name="username" id="username" /><br/><br/>
+<input type="password" class="input" name="password" /><br/><br/>
+<input type="checkbox" id="terms_and_conditions" value="1" onclick="terms_changed(this)"> I agree the <a href="#">Terms and Conditions</a><br/><br/>
+<input type="submit" id="submit_button" class="button" value="Submit" disabled/>
+</form>
+</center>
+<br/><br/><br/><br/>
+<table>
+<legend>MyndFactory</legend>
+<tr>
+<td>
+    <ul align="left">
+        <li>About</li>
+        <li>Blog</li>
+        <li>Privacy</li>
+        <li>Terms</li>
+        <li>What is this?</li>
+    </ul>
+</td>
+<td>
+    <ul align="right">
+        <li>Prices</li>
+        <li>Team</li>
+        <li>FAQ</li>
+        <li>&nbsp;</li>
+        <li>&nbsp;</li>
+    </ul>
+</td>
+</tr>
+</table>
+<br/>
+<footer>
+    <center>
+        <a href="#"><i class="fa fa-github"></i></a>
+        <a href="#"><i class="fa fa-facebook-official"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-youtube-play"></i></a>
+        <p>@2020 Copy rights<p>
+    </center>
+</footer>
+<br/><br/>
+</body>
+</html> 

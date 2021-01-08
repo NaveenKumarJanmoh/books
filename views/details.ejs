@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <link href='/css/details.css' rel='stylesheet'>
+    </head>
+    <body>
+        <img class="img" src="<%=data[0].image%>" width="150" height="250">
+
+        <div class="dropdown">
+            <button class="dropbtn">Want to </button>
+            <div class="dropdown-content">
+                <form action="/gift" type method="GET">
+                    <button type="submit" class="dropbtn1">Gift</button>
+                </form>
+                <form action="/share" method="GET">
+                    <button type="submit" class="dropbtn1">Share/Rent</button>
+                </form>
+                <form action="/donate" method="get">
+                    <button type="submit" class="dropbtn1">Donate</button>
+                </form>
+            </div>
+        </div>
+
+        <div>
+        <input type="hidden" name="code" value="<%=data[0].code%>"/>
+        <table class="info_table">
+            <tr><th><%=data[0].title%></th></tr>
+            <tr><td><p>by <%=data[0].author%>
+            </p><p><%=data[0].rate%></p><p><%=data[0].price%></p><p>ISBN: <%=data[0].code%></p><p>English</p><p>
+            Awards: Financial Times and McKinsey Business Book of the Year Nominee for Longlist (2008) </p></td></tr>
+        </table>
+        <table class="data_table">
+            <tr><td><p><b>Description</b><br/><br/>I wonder how the book got to Guernsey? Perhaps there is some sort of secret homing instinct in books that brings them to their perfect readers." January 1946: London is emerging from the shadow of the Second World War, and writer Juliet Ashton is looking for her next book subject. Who could imagine that she would find it in a letter from a man she's never met, a native of the island of Guernsey, who has come across her name written inside a book by Charles Lamb...
+
+            As Juliet and her new correspondent exchange letters, Juliet is drawn into the world of this man and his friends—and what a wonderfully eccentric world it is. The Guernsey Literary and Potato Peel Pie Society—born as a spur-of-the-moment alibi when its members were discovered breaking curfew by the Germans occupying their island—boasts a charming, funny, deeply human cast of characters, from pig farmers to phrenologists, literature lovers all.
+            </p><br/></td></tr>
+            <tr><td><p><b>About author</b><br/><br/>Mary Ann Shaffer worked as an editor, a librarian, and in bookshops. Her life-long dream was to someday write her own book and publish it. The Guernsey Literary and Potato Peel Pie Society was her first novel. Unfortunately, she became very ill with cancer and so she asked her niece, Annie Barrows, the author of the children’s series Ivy and Bean, as well as The Magic Half, to help her finish the book. Mary Ann Shaffer died in February 2008, a few months before her first novel was published.
+            </p></td></tr>
+        </table>
+        </div>
+        <br/>
+        <h4>Ratings and Reviews</h4>
+        <table class="rate_table">
+            <% if(data1.length){
+                for(var i = 0;i < data1.length;i++) { %>
+            <tr><th rowspan="3" valign="top"><img src="https://tinyurl.com/hau95uz"/></th></tr>
+            <tr><th>
+                <%=data1[i].name%>
+            </th></tr>
+            <tr><td>
+                <%=data1[i].comment%>
+            </td></tr>
+            <% }
+        }else{
+        } %>
+        </table>
+    </body>
+</html>
